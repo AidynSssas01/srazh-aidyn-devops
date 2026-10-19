@@ -1,1 +1,0 @@
-# srazh-aidyn-devops
