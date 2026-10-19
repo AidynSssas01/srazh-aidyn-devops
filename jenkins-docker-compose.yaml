@@ -1,0 +1,21 @@
+# ------------------------------------------------------------
+# Start Jenkins locally:   cd jenkins && docker compose up -d --build
+# Open:                    http://localhost:8080
+# First password:          docker exec srazh-aidyn-jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+# ------------------------------------------------------------
+services:
+  jenkins:
+    build: .
+    image: srazh-aidyn-jenkins:lts
+    container_name: srazh-aidyn-jenkins
+    user: root                     # needed to use the mounted Docker socket (lab environment only)
+    ports:
+      - "8080:8080"                # Jenkins web UI
+      - "50000:50000"              # Jenkins agents
+    volumes:
+      - jenkins_home:/var/jenkins_home              # Jenkins data survives restarts
+      - /var/run/docker.sock:/var/run/docker.sock   # Jenkins uses the host Docker engine
+    restart: unless-stopped
+
+volumes:
+  jenkins_home:

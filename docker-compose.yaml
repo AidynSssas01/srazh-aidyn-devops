@@ -1,0 +1,25 @@
+# ------------------------------------------------------------
+# Docker Compose — srazh-aidyn-devops
+# Start:  docker compose up -d --build
+# Check:  docker compose ps    /  docker compose logs
+# Stop:   docker compose down
+# ------------------------------------------------------------
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: srazh-aidyn-devops:latest
+    container_name: srazh-aidyn-compose
+    environment:
+      # values come from the shell or from .env file, otherwise defaults after ":-"
+      STUDENT_NAME: ${STUDENT_NAME:-Aidyn}
+      STUDENT_SURNAME: ${STUDENT_SURNAME:-Srazh}
+      STUDENT_GROUP: ${STUDENT_GROUP:-IT2-2308}
+      STUDENT_ID: ${STUDENT_ID:-36210}
+      APP_ENV: compose
+    ports:
+      - "8086:8085"            # host:container (8085 is used by the Jenkins-run container)
+    volumes:
+      - ./config/app.conf:/app/config/app.conf:ro   # configuration mounted read-only
+    restart: unless-stopped

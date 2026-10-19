@@ -1,0 +1,8 @@
+# Copy to .env and edit:  cp .env.example .env
+# .env is ignored by Git (see .gitignore) — real secrets never go to GitHub.
+STUDENT_NAME=Aidyn
+STUDENT_SURNAME=Srazh
+STUDENT_GROUP=IT2-2308
+STUDENT_ID=36210
+# Example of a secret that must never be committed:
+# DB_PASSWORD=change-me

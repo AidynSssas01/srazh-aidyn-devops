@@ -1,0 +1,12 @@
+# Files that are NOT sent to the Docker build context
+.git
+.gitignore
+.env
+logs/
+backup/
+jenkins/
+__pycache__/
+*.pyc
+*.log
+private.txt
+public.txt

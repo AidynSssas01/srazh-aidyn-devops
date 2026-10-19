@@ -1,0 +1,14 @@
+# Logs are generated at runtime — they change all the time and must not be in Git
+*.log
+# Local backups
+backup/
+# Secrets / local environment variables (passwords, tokens)
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
